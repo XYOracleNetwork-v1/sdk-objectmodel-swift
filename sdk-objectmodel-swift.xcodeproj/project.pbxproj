@@ -8,8 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		8CFBB63A21F6371D00BD42A3 /* sdk_objectmodel_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFBB63021F6371D00BD42A3 /* sdk_objectmodel_swift.framework */; };
-		8CFBB63F21F6371D00BD42A3 /* sdk_objectmodel_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB63E21F6371D00BD42A3 /* sdk_objectmodel_swiftTests.swift */; };
 		8CFBB64121F6371D00BD42A3 /* sdk_objectmodel_swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CFBB63321F6371D00BD42A3 /* sdk_objectmodel_swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8CFBB64F21F6395C00BD42A3 /* XyoObjectSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB64E21F6395C00BD42A3 /* XyoObjectSchema.swift */; };
+		8CFBB65121F643F500BD42A3 /* XyoObjectSchemaTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB65021F643F500BD42A3 /* XyoObjectSchemaTest.swift */; };
+		8CFBB65321F64AC000BD42A3 /* XyoObjectErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB65221F64AC000BD42A3 /* XyoObjectErrors.swift */; };
+		8CFBB65521F64B5600BD42A3 /* XyoObjectSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB65421F64B5600BD42A3 /* XyoObjectSizes.swift */; };
+		8CFBB65721F64F8600BD42A3 /* XyoUInt8ToHexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB65621F64F8600BD42A3 /* XyoUInt8ToHexString.swift */; };
+		8CFBB65921F64FE600BD42A3 /* XyoUInt8ToHexStringTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB65821F64FE600BD42A3 /* XyoUInt8ToHexStringTest.swift */; };
+		8CFBB65B21F651A100BD42A3 /* XyoBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB65A21F651A100BD42A3 /* XyoBuffer.swift */; };
+		8CFBB65D21F6559F00BD42A3 /* XyoByteUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB65C21F6559F00BD42A3 /* XyoByteUtil.swift */; };
+		8CFBB65F21F6583700BD42A3 /* XyoByteUtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB65E21F6583700BD42A3 /* XyoByteUtilTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +35,16 @@
 		8CFBB63321F6371D00BD42A3 /* sdk_objectmodel_swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sdk_objectmodel_swift.h; sourceTree = "<group>"; };
 		8CFBB63421F6371D00BD42A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CFBB63921F6371D00BD42A3 /* sdk-objectmodel-swiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "sdk-objectmodel-swiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CFBB63E21F6371D00BD42A3 /* sdk_objectmodel_swiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sdk_objectmodel_swiftTests.swift; sourceTree = "<group>"; };
 		8CFBB64021F6371D00BD42A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CFBB64E21F6395C00BD42A3 /* XyoObjectSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoObjectSchema.swift; sourceTree = "<group>"; };
+		8CFBB65021F643F500BD42A3 /* XyoObjectSchemaTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoObjectSchemaTest.swift; sourceTree = "<group>"; };
+		8CFBB65221F64AC000BD42A3 /* XyoObjectErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoObjectErrors.swift; sourceTree = "<group>"; };
+		8CFBB65421F64B5600BD42A3 /* XyoObjectSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoObjectSizes.swift; sourceTree = "<group>"; };
+		8CFBB65621F64F8600BD42A3 /* XyoUInt8ToHexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoUInt8ToHexString.swift; sourceTree = "<group>"; };
+		8CFBB65821F64FE600BD42A3 /* XyoUInt8ToHexStringTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoUInt8ToHexStringTest.swift; sourceTree = "<group>"; };
+		8CFBB65A21F651A100BD42A3 /* XyoBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoBuffer.swift; sourceTree = "<group>"; };
+		8CFBB65C21F6559F00BD42A3 /* XyoByteUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoByteUtil.swift; sourceTree = "<group>"; };
+		8CFBB65E21F6583700BD42A3 /* XyoByteUtilTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoByteUtilTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +89,12 @@
 			children = (
 				8CFBB63321F6371D00BD42A3 /* sdk_objectmodel_swift.h */,
 				8CFBB63421F6371D00BD42A3 /* Info.plist */,
+				8CFBB64E21F6395C00BD42A3 /* XyoObjectSchema.swift */,
+				8CFBB65221F64AC000BD42A3 /* XyoObjectErrors.swift */,
+				8CFBB65421F64B5600BD42A3 /* XyoObjectSizes.swift */,
+				8CFBB65621F64F8600BD42A3 /* XyoUInt8ToHexString.swift */,
+				8CFBB65A21F651A100BD42A3 /* XyoBuffer.swift */,
+				8CFBB65C21F6559F00BD42A3 /* XyoByteUtil.swift */,
 			);
 			path = "sdk-objectmodel-swift";
 			sourceTree = "<group>";
@@ -80,8 +102,10 @@
 		8CFBB63D21F6371D00BD42A3 /* sdk-objectmodel-swiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				8CFBB63E21F6371D00BD42A3 /* sdk_objectmodel_swiftTests.swift */,
 				8CFBB64021F6371D00BD42A3 /* Info.plist */,
+				8CFBB65021F643F500BD42A3 /* XyoObjectSchemaTest.swift */,
+				8CFBB65821F64FE600BD42A3 /* XyoUInt8ToHexStringTest.swift */,
+				8CFBB65E21F6583700BD42A3 /* XyoByteUtilTest.swift */,
 			);
 			path = "sdk-objectmodel-swiftTests";
 			sourceTree = "<group>";
@@ -148,6 +172,7 @@
 				TargetAttributes = {
 					8CFBB62F21F6371D00BD42A3 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					8CFBB63821F6371D00BD42A3 = {
 						CreatedOnToolsVersion = 10.1;
@@ -194,6 +219,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CFBB65D21F6559F00BD42A3 /* XyoByteUtil.swift in Sources */,
+				8CFBB65321F64AC000BD42A3 /* XyoObjectErrors.swift in Sources */,
+				8CFBB65B21F651A100BD42A3 /* XyoBuffer.swift in Sources */,
+				8CFBB64F21F6395C00BD42A3 /* XyoObjectSchema.swift in Sources */,
+				8CFBB65521F64B5600BD42A3 /* XyoObjectSizes.swift in Sources */,
+				8CFBB65721F64F8600BD42A3 /* XyoUInt8ToHexString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +232,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CFBB63F21F6371D00BD42A3 /* sdk_objectmodel_swiftTests.swift in Sources */,
+				8CFBB65F21F6583700BD42A3 /* XyoByteUtilTest.swift in Sources */,
+				8CFBB65121F643F500BD42A3 /* XyoObjectSchemaTest.swift in Sources */,
+				8CFBB65921F64FE600BD42A3 /* XyoUInt8ToHexStringTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +374,7 @@
 		8CFBB64521F6371D00BD42A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +392,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "network.xyo.sdk-objectmodel-swift";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +401,7 @@
 		8CFBB64621F6371D00BD42A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -391,6 +427,7 @@
 		8CFBB64821F6371D00BD42A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA9VC4AR6Q;
 				INFOPLIST_FILE = "sdk-objectmodel-swiftTests/Info.plist";
@@ -409,6 +446,7 @@
 		8CFBB64921F6371D00BD42A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WA9VC4AR6Q;
 				INFOPLIST_FILE = "sdk-objectmodel-swiftTests/Info.plist";
