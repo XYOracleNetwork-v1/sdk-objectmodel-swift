@@ -24,4 +24,27 @@ class XyoByteUtiltest : XCTestCase {
         XCTAssertEqual(XyoByteUtil.concatAll(arrays: totalArray), expectedArray)
     }
     
+    func testGetBestSizeOne () {
+        XCTAssertEqual(XyoObjectSize.ONE, XyoByteUtil.getBestSize(size: 0))
+        XCTAssertEqual(XyoObjectSize.ONE, XyoByteUtil.getBestSize(size: 155))
+        XCTAssertEqual(XyoObjectSize.ONE, XyoByteUtil.getBestSize(size: 254))
+    }
+    
+    func testGetBestSizeTwo () {
+        XCTAssertEqual(XyoObjectSize.TWO, XyoByteUtil.getBestSize(size: 255))
+        XCTAssertEqual(XyoObjectSize.TWO, XyoByteUtil.getBestSize(size: 14033))
+        XCTAssertEqual(XyoObjectSize.TWO, XyoByteUtil.getBestSize(size: Int(UInt16.max - UInt16(2))))
+    }
+    
+    func testGetBestSizeFour () {
+        XCTAssertEqual(XyoObjectSize.FOUR, XyoByteUtil.getBestSize(size: Int(UInt16.max)))
+        XCTAssertEqual(XyoObjectSize.FOUR, XyoByteUtil.getBestSize(size: Int(UInt16.max) * Int(UInt16(4))))
+        XCTAssertEqual(XyoObjectSize.FOUR, XyoByteUtil.getBestSize(size: Int(UInt32.max - UInt32(4))))
+    }
+    
+    func testGetBestSizeEight () {
+        XCTAssertEqual(XyoObjectSize.EIGHT, XyoByteUtil.getBestSize(size: Int(UInt32.max)))
+        XCTAssertEqual(XyoObjectSize.EIGHT, XyoByteUtil.getBestSize(size: Int(UInt32.max) * Int(UInt32(4))))
+    }
+    
 }
