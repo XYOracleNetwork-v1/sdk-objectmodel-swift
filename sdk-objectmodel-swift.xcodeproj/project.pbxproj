@@ -18,6 +18,8 @@
 		8CFBB65B21F651A100BD42A3 /* XyoBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB65A21F651A100BD42A3 /* XyoBuffer.swift */; };
 		8CFBB65D21F6559F00BD42A3 /* XyoByteUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB65C21F6559F00BD42A3 /* XyoByteUtil.swift */; };
 		8CFBB65F21F6583700BD42A3 /* XyoByteUtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB65E21F6583700BD42A3 /* XyoByteUtilTest.swift */; };
+		8CFBB66121F66E1400BD42A3 /* XyoObjectStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB66021F66E1400BD42A3 /* XyoObjectStructure.swift */; };
+		8CFBB66321F670CD00BD42A3 /* XyoBufferTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB66221F670CD00BD42A3 /* XyoBufferTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		8CFBB65A21F651A100BD42A3 /* XyoBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoBuffer.swift; sourceTree = "<group>"; };
 		8CFBB65C21F6559F00BD42A3 /* XyoByteUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoByteUtil.swift; sourceTree = "<group>"; };
 		8CFBB65E21F6583700BD42A3 /* XyoByteUtilTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoByteUtilTest.swift; sourceTree = "<group>"; };
+		8CFBB66021F66E1400BD42A3 /* XyoObjectStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoObjectStructure.swift; sourceTree = "<group>"; };
+		8CFBB66221F670CD00BD42A3 /* XyoBufferTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoBufferTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 				8CFBB65621F64F8600BD42A3 /* XyoUInt8ToHexString.swift */,
 				8CFBB65A21F651A100BD42A3 /* XyoBuffer.swift */,
 				8CFBB65C21F6559F00BD42A3 /* XyoByteUtil.swift */,
+				8CFBB66021F66E1400BD42A3 /* XyoObjectStructure.swift */,
 			);
 			path = "sdk-objectmodel-swift";
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 				8CFBB65021F643F500BD42A3 /* XyoObjectSchemaTest.swift */,
 				8CFBB65821F64FE600BD42A3 /* XyoUInt8ToHexStringTest.swift */,
 				8CFBB65E21F6583700BD42A3 /* XyoByteUtilTest.swift */,
+				8CFBB66221F670CD00BD42A3 /* XyoBufferTest.swift */,
 			);
 			path = "sdk-objectmodel-swiftTests";
 			sourceTree = "<group>";
@@ -219,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CFBB66121F66E1400BD42A3 /* XyoObjectStructure.swift in Sources */,
 				8CFBB65D21F6559F00BD42A3 /* XyoByteUtil.swift in Sources */,
 				8CFBB65321F64AC000BD42A3 /* XyoObjectErrors.swift in Sources */,
 				8CFBB65B21F651A100BD42A3 /* XyoBuffer.swift in Sources */,
@@ -232,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CFBB66321F670CD00BD42A3 /* XyoBufferTest.swift in Sources */,
 				8CFBB65F21F6583700BD42A3 /* XyoByteUtilTest.swift in Sources */,
 				8CFBB65121F643F500BD42A3 /* XyoObjectSchemaTest.swift in Sources */,
 				8CFBB65921F64FE600BD42A3 /* XyoUInt8ToHexStringTest.swift in Sources */,
