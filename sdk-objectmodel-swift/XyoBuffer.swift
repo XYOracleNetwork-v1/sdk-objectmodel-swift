@@ -47,6 +47,10 @@ class XyoBuffer {
         return self.lastOffset ?? self.data.endIndex
     }
     
+    func getSize () -> Int {
+        return allowedOffset - getEnd()
+    }
+    
     func toByteArray() -> [UInt8] {
         return Array(data[allowedOffset..<getEnd()])
     }
@@ -86,6 +90,16 @@ class XyoBuffer {
         let one = UInt64(data[allowedOffset + offset + 7])
         
         return (one+two+three+four)+(five+six+seven+eight)
+    }
+    
+    func copyRangeOf(from : Int, to : Int) -> XyoBuffer {
+        let returnBuffer = XyoBuffer()
+        
+        for i in from...to {
+            returnBuffer.put(bits: getUInt8(offset: i))
+        }
+        
+        return returnBuffer
     }
 
     @discardableResult

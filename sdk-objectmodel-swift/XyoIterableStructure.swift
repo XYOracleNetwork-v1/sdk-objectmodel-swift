@@ -142,4 +142,32 @@ class XyoIterableStructure: XyoObjectStructure {
         }
     }
     
+    static func createUntypedIterableObject (schema : XyoObjectSchema, values: [XyoObjectStructure]) throws -> XyoIterableStructure {
+        if (schema.getIsTypedIterable()) {
+            throw XyoObjectError.NOT_UNTYPED
+        }
+        
+        let buffer = XyoBuffer()
+        
+        for item in values {
+            buffer.put(buffer: item.value)
+        }
+        
+        return XyoIterableStructure(value: XyoObjectStructure.newInstance(schema: schema, bytes: buffer).getBuffer())
+    }
+    
+    static func createTypedIterableObject (schema : XyoObjectSchema, values: [XyoObjectStructure]) throws -> XyoIterableStructure {
+        if (!schema.getIsTypedIterable()) {
+            throw XyoObjectError.NOT_TYPED
+        }
+        
+        let buffer = XyoBuffer()
+        
+        for item in values {
+            buffer.put(buffer: item.value.copyRangeOf(from: 2, to: item.value.getSize()))
+        }
+        
+        return XyoIterableStructure(value: XyoObjectStructure.newInstance(schema: schema, bytes: buffer).getBuffer())
+    }
+    
 }

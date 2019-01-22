@@ -12,4 +12,6 @@ enum XyoObjectError: Error {
     case SIZE_ZERO
     case NOT_ITERABLE
     case OUT_OF_INDEX
+    case NOT_UNTYPED
+    case NOT_TYPED
 }
