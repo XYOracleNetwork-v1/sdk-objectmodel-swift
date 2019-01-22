@@ -10,22 +10,54 @@ import Foundation
 
 class XyoIterableStructure: XyoObjectStructure {
     private var globalSchema : XyoObjectSchema? = nil
-    private var currentOffset : Int = 0
     
-    func hasNext () -> Bool {
-        return 2 + getSize() + value.allowedOffset > currentOffset
+    func getNewIterator () throws -> XyoObjectIterator {
+        return try XyoObjectIterator(currentOffset : readOwnHeader(), structure : self, isTyped : globalSchema == nil)
     }
     
-    func next () throws -> XyoObjectStructure {
-        let nextItem = try readItemAtOffset(offset: currentOffset)
+    func getCount () throws -> Int {
+        let sizeIt = try self.getNewIterator()
+        var i = 0
         
-        if (globalSchema == nil) {
-            currentOffset += nextItem.getSize() + 2
-        } else {
-            currentOffset += nextItem.getSize()
+        while (sizeIt.hasNext()) {
+            i += 1
+            try sizeIt.next()
         }
         
-        return nextItem
+        return i
+    }
+    
+    func get (index : Int) throws -> XyoObjectStructure {
+        let it = try getNewIterator()
+        var i = 0
+        
+        while (it.hasNext()) {
+            let item = try it.next()
+            
+            if (index == i) {
+                return item
+            }
+            
+            i += 1
+        }
+        
+        throw XyoObjectError.OUT_OF_INDEX
+    }
+    
+    func get (id : UInt8) throws -> [XyoObjectStructure] {
+        let it = try getNewIterator()
+        var itemsThatFollowId = [XyoObjectStructure]()
+        
+        while (it.hasNext()) {
+            let item = try it.next()
+            
+            if (item.getSchema().id == id) {
+                itemsThatFollowId.append(item)
+            }
+            
+        }
+        
+       return itemsThatFollowId
     }
     
     func readItemAtOffset (offset : Int) throws -> XyoObjectStructure {
@@ -63,6 +95,51 @@ class XyoIterableStructure: XyoObjectStructure {
         }
         
         return XyoObjectStructure(value: XyoBuffer(data: value, allowedOffset: offset), schema: schemaOfItem)
+    }
+    
+    private func readOwnHeader () throws -> Int {
+        let setHeader = value.getSchema(offset: 0)
+        let totalSize = readSizeOfObject(sizeIdentifier: setHeader.getSizeIdentifier(), offset: 2)
+        
+        if (!setHeader.getIsIterable()) {
+            throw XyoObjectError.NOT_ITERABLE
+        }
+        
+        if (setHeader.getIsTypedIterable() && totalSize != setHeader.getSizeIdentifier().rawValue) {
+            globalSchema = value.getSchema(offset: setHeader.getSizeIdentifier().rawValue + 2)
+            return 4 + setHeader.getSizeIdentifier().rawValue
+        }
+        
+        return 2 + setHeader.getSizeIdentifier().rawValue
+    }
+    
+    class XyoObjectIterator {
+        private var isTyped : Bool
+        private var structure : XyoIterableStructure
+        private var currentOffset : Int = 0
+        
+        init(currentOffset : Int, structure : XyoIterableStructure, isTyped : Bool) {
+            self.structure = structure
+            self.currentOffset = currentOffset
+            self.isTyped = isTyped
+        }
+        
+        func hasNext () -> Bool {
+            return 2 + structure.getSize() + structure.value.allowedOffset > currentOffset
+        }
+        
+        @discardableResult
+        func next () throws -> XyoObjectStructure {
+            let nextItem = try structure.readItemAtOffset(offset: currentOffset)
+            
+            if (isTyped) {
+                currentOffset += nextItem.getSize()
+            } else {
+                currentOffset += nextItem.getSize() + 2
+            }
+            
+            return nextItem
+        }
     }
     
 }

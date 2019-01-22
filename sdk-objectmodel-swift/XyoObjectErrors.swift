@@ -10,4 +10,6 @@ import Foundation
 
 enum XyoObjectError: Error {
     case SIZE_ZERO
+    case NOT_ITERABLE
+    case OUT_OF_INDEX
 }
