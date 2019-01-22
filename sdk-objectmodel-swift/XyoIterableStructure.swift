@@ -12,7 +12,7 @@ class XyoIterableStructure: XyoObjectStructure {
     private var globalSchema : XyoObjectSchema? = nil
     
     func getNewIterator () throws -> XyoObjectIterator {
-        return try XyoObjectIterator(currentOffset : readOwnHeader(), structure : self, isTyped : globalSchema == nil)
+        return try XyoObjectIterator(currentOffset : readOwnHeader(), structure : self, isTyped : globalSchema != nil)
     }
     
     func getCount () throws -> Int {
@@ -77,10 +77,10 @@ class XyoIterableStructure: XyoObjectStructure {
         }
         
         if (schemaOfItem.getIsIterable()) {
-            return XyoIterableStructure(value: XyoBuffer(data: value, allowedOffset: offset))
+            return XyoIterableStructure(value: XyoBuffer(data: value, allowedOffset: offset, lastOffset: sizeOfObject + offset + schemaOfItem.getSizeIdentifier().rawValue + 1))
         }
         
-        return XyoIterableStructure(value: XyoBuffer(data: value, allowedOffset: offset))
+        return XyoIterableStructure(value: XyoBuffer(data: value, allowedOffset: offset, lastOffset: sizeOfObject + offset + schemaOfItem.getSizeIdentifier().rawValue + 1))
     }
     
     private func readItemTyped (offset : Int, schemaOfItem : XyoObjectSchema) throws -> XyoObjectStructure {
@@ -125,17 +125,18 @@ class XyoIterableStructure: XyoObjectStructure {
         }
         
         func hasNext () -> Bool {
-            return 2 + structure.getSize() + structure.value.allowedOffset > currentOffset
+            return structure.value.getSize() + structure.value.allowedOffset > currentOffset
         }
         
         @discardableResult
         func next () throws -> XyoObjectStructure {
+            
             let nextItem = try structure.readItemAtOffset(offset: currentOffset)
             
             if (isTyped) {
-                currentOffset += nextItem.getSize()
+                currentOffset += nextItem.value.getSize() - 2
             } else {
-                currentOffset += nextItem.getSize() + 2
+                currentOffset += nextItem.value.getSize()
             }
             
             return nextItem

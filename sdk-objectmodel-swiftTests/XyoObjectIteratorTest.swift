@@ -70,4 +70,24 @@ class XyoObjectIteratorTest : XCTestCase {
         XCTAssertEqual(createdSet.value.toByteArray(), expectedIterable)
     }
     
+    func testObjectIteratorUntyped () throws {
+        let iterableStructure = XyoIterableStructure(value: XyoBuffer(data: [0x20, 0x41, 0x09, 0x00, 0x44, 0x02, 0x14, 0x00, 0x42, 0x02, 0x37]))
+        let iterable = try iterableStructure.getNewIterator()
+        var i = 0
+        
+        while iterable.hasNext() {
+            if (i == 0) {
+                let bytes = try iterable.next().getBuffer().toByteArray()
+                XCTAssertEqual(bytes, [0x00, 0x44, 0x02, 0x14])
+            } else if (i == 1) {
+                let bytes = try iterable.next().getBuffer().toByteArray()
+                XCTAssertEqual(bytes, [0x00, 0x42, 0x02, 0x37])
+            } else {
+                throw XyoObjectError.OUT_OF_INDEX
+            }
+            
+            i += 1
+        }
+    }
+    
 }
