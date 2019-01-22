@@ -32,14 +32,14 @@ class XyoObjectIteratorTest : XCTestCase {
             XyoObjectStructure.newInstance(schema: itemTwoSchema, bytes: XyoBuffer(data: [0x13, 0x37])),
         ]
         
-        let expectedIterable : [UInt8] = [0x20, 0xff,
-                                0x0b,
-                                0x00, 0x55,
-                                0x03,
-                                0x13, 0x37,
-                                0x00, 0x55,
-                                0x03,
-                                0x13, 0x37]
+        let expectedIterable : [UInt8] = [0x20, 0xff,   // root header
+                                          0x0b,         // size of entire array
+                                          0x00, 0x55,   // header of element [0]
+                                          0x03,         // size of element [0]
+                                          0x13, 0x37,   // value of element [0]
+                                          0x00, 0x55,   // header of element [1]
+                                          0x03,         // size of element [1]
+                                          0x13, 0x37]   // value of element [1]
         
         let createdSet = try XyoIterableStructure.createUntypedIterableObject(schema: iterableSchema, values: values)
         
@@ -57,12 +57,13 @@ class XyoObjectIteratorTest : XCTestCase {
             XyoObjectStructure.newInstance(schema: itemTwoSchema, bytes: XyoBuffer(data: [0x13, 0x37])),
         ]
         
-        let expectedIterable : [UInt8] = [0x30, 0xff,
-                                          0x07,
-                                          0x03,
-                                          0x13, 0x37,
-                                          0x03,
-                                          0x13, 0x37]
+        let expectedIterable : [UInt8] = [0x30, 0xff, // root header
+                                          0x09,       // size of entire array
+                                          0x00, 0x55, // header for all elements
+                                          0x03,       // size of element [0]
+                                          0x13, 0x37, // value of element [0]
+                                          0x03,       // size of element [1]
+                                          0x13, 0x37] // value of element [1]
         
         let createdSet = try XyoIterableStructure.createTypedIterableObject(schema: iterableSchema, values: values)
         

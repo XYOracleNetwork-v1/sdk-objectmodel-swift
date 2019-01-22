@@ -161,7 +161,13 @@ class XyoIterableStructure: XyoObjectStructure {
             throw XyoObjectError.NOT_TYPED
         }
         
+        if (values.isEmpty) {
+            throw XyoObjectError.NO_ELEMENTS
+        }
+        
         let buffer = XyoBuffer()
+        
+        buffer.put(schema: values[0].getSchema())
         
         for item in values {
             buffer.put(buffer: item.value.copyRangeOf(from: 2, to: item.value.getSize()))

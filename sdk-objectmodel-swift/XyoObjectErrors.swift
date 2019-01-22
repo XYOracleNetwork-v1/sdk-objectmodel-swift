@@ -14,4 +14,5 @@ enum XyoObjectError: Error {
     case OUT_OF_INDEX
     case NOT_UNTYPED
     case NOT_TYPED
+    case NO_ELEMENTS
 }
