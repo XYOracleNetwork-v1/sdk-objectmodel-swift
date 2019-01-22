@@ -9,5 +9,5 @@
 import Foundation
 
 enum XyoObjectError: Error {
-    case IS_READ_ONLY
+    case SIZE_ZERO
 }

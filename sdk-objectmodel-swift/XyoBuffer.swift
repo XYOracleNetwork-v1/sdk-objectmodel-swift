@@ -9,34 +9,46 @@
 import Foundation
 
 class XyoBuffer {
-    private let readOnly : Bool
-    private let allowedOffset : Int
-    private var data : [UInt8]
+    private let lastOffset : Int?
+    let allowedOffset : Int
+    internal var data : [UInt8]
     
-    init(data : [UInt8], allowedOffset: Int, readOnly : Bool) {
+    init(data : [UInt8], allowedOffset: Int, lastOffset : Int?) {
         self.data = data
         self.allowedOffset = allowedOffset
-        self.readOnly = readOnly
+        self.lastOffset = lastOffset
+    }
+    
+    init(data : XyoBuffer, allowedOffset: Int, lastOffset : Int?) {
+        self.data = data.data
+        self.allowedOffset = allowedOffset
+        self.lastOffset = lastOffset
+    }
+    
+    init(data : XyoBuffer, allowedOffset: Int) {
+        self.data = data.data
+        self.allowedOffset = allowedOffset
+        self.lastOffset = nil
     }
     
     init(data : [UInt8]) {
         self.data = data
         self.allowedOffset = 0
-        self.readOnly = false
+        self.lastOffset = nil
     }
     
     init() {
         self.data = [UInt8]()
         self.allowedOffset = 0
-        self.readOnly = false
+        self.lastOffset = nil
     }
     
     private func getEnd () -> Int {
-        return data.endIndex
+        return self.lastOffset ?? self.data.endIndex
     }
     
     func toByteArray() -> [UInt8] {
-        return Array(data[allowedOffset..<data.count])
+        return Array(data[allowedOffset..<getEnd()])
     }
     
     func getSchema(offset : Int) -> XyoObjectSchema {

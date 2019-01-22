@@ -14,17 +14,9 @@ class XyoObjectStructureTest : XCTestCase {
     
     func testGetBuffer () {
         let schema = XyoObjectSchema.create(id: 0xff, isIterable: false, isTypedIterable: false, sizeIdentifier: XyoObjectSize.ONE)
-        let structure = XyoObjectStructure(schema: schema)
-        structure.value = [0x13, 0x37]
+        let structure = XyoObjectStructure.newInstance(schema: schema, bytes: XyoBuffer(data: [0x13, 0x37]))
         
         XCTAssertEqual(structure.getBuffer().toByteArray(), [0xff, 0x00, 0x03, 0x13, 0x37])
     }
     
-    func testGetBytes () {
-        let schema = XyoObjectSchema.create(id: 0xff, isIterable: false, isTypedIterable: false, sizeIdentifier: XyoObjectSize.ONE)
-        let structure = XyoObjectStructure(schema: schema)
-        structure.value = [0x13, 0x37]
-        
-        XCTAssertEqual(structure.getBytes(), [0xff, 0x00, 0x03, 0x13, 0x37])
-    }
 }
