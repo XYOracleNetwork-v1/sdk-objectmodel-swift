@@ -150,7 +150,7 @@ class XyoIterableStructure: XyoObjectStructure {
         let buffer = XyoBuffer()
         
         for item in values {
-            buffer.put(buffer: item.value)
+            buffer.put(buffer: item.getBuffer())
         }
         
         return XyoIterableStructure(value: XyoObjectStructure.newInstance(schema: schema, bytes: buffer).getBuffer())

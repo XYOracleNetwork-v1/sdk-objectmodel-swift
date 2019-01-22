@@ -22,6 +22,7 @@
 		8CFBB66321F670CD00BD42A3 /* XyoBufferTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB66221F670CD00BD42A3 /* XyoBufferTest.swift */; };
 		8CFBB66521F6780200BD42A3 /* XyoObjectStructureTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB66421F6780200BD42A3 /* XyoObjectStructureTest.swift */; };
 		8CFBB66721F67ED700BD42A3 /* XyoIterableStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB66621F67ED700BD42A3 /* XyoIterableStructure.swift */; };
+		8CFBB66B21F6A67D00BD42A3 /* XyoObjectIteratorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB66A21F6A67D00BD42A3 /* XyoObjectIteratorTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		8CFBB66221F670CD00BD42A3 /* XyoBufferTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoBufferTest.swift; sourceTree = "<group>"; };
 		8CFBB66421F6780200BD42A3 /* XyoObjectStructureTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoObjectStructureTest.swift; sourceTree = "<group>"; };
 		8CFBB66621F67ED700BD42A3 /* XyoIterableStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoIterableStructure.swift; sourceTree = "<group>"; };
+		8CFBB66A21F6A67D00BD42A3 /* XyoObjectIteratorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoObjectIteratorTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				8CFBB65E21F6583700BD42A3 /* XyoByteUtilTest.swift */,
 				8CFBB66221F670CD00BD42A3 /* XyoBufferTest.swift */,
 				8CFBB66421F6780200BD42A3 /* XyoObjectStructureTest.swift */,
+				8CFBB66A21F6A67D00BD42A3 /* XyoObjectIteratorTest.swift */,
 			);
 			path = "sdk-objectmodel-swiftTests";
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				8CFBB66321F670CD00BD42A3 /* XyoBufferTest.swift in Sources */,
 				8CFBB65F21F6583700BD42A3 /* XyoByteUtilTest.swift in Sources */,
 				8CFBB66521F6780200BD42A3 /* XyoObjectStructureTest.swift in Sources */,
+				8CFBB66B21F6A67D00BD42A3 /* XyoObjectIteratorTest.swift in Sources */,
 				8CFBB65121F643F500BD42A3 /* XyoObjectSchemaTest.swift in Sources */,
 				8CFBB65921F64FE600BD42A3 /* XyoUInt8ToHexStringTest.swift in Sources */,
 			);

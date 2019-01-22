@@ -48,7 +48,7 @@ class XyoBuffer {
     }
     
     func getSize () -> Int {
-        return allowedOffset - getEnd()
+        return  getEnd() - allowedOffset
     }
     
     func toByteArray() -> [UInt8] {
@@ -56,7 +56,7 @@ class XyoBuffer {
     }
     
     func getSchema(offset : Int) -> XyoObjectSchema {
-        return XyoObjectSchema(id: data[allowedOffset + offset], encodingCatalogue: data[allowedOffset + offset + 1])
+        return XyoObjectSchema(id: data[allowedOffset + offset + 1], encodingCatalogue: data[allowedOffset + offset])
     }
     
     func getUInt8 (offset : Int) -> UInt8 {
@@ -95,7 +95,7 @@ class XyoBuffer {
     func copyRangeOf(from : Int, to : Int) -> XyoBuffer {
         let returnBuffer = XyoBuffer()
         
-        for i in from...to {
+        for i in from...to - 1 {
             returnBuffer.put(bits: getUInt8(offset: i))
         }
         

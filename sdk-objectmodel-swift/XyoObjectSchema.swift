@@ -46,7 +46,7 @@ struct XyoObjectSchema {
     }
     
     func toByteArray () -> [UInt8] {
-        return [id, encodingCatalogue]
+        return [encodingCatalogue, id]
     }
     
     static func create (id : UInt8, isIterable : Bool, isTypedIterable: Bool, sizeIdentifier : XyoObjectSize) -> XyoObjectSchema {
