@@ -84,17 +84,17 @@ class XyoIterableStructure: XyoObjectStructure {
     }
     
     private func readItemTyped (offset : Int, schemaOfItem : XyoObjectSchema) throws -> XyoObjectStructure {
-        let sizeOfObject = readSizeOfObject(sizeIdentifier : schemaOfItem.getSizeIdentifier(), offset: offset + 2)
+        let sizeOfObject = readSizeOfObject(sizeIdentifier : schemaOfItem.getSizeIdentifier(), offset: offset)
         
         if (sizeOfObject == 0) {
             throw XyoObjectError.SIZE_ZERO
         }
         
         if (schemaOfItem.getIsIterable()) {
-            return XyoIterableStructure(value: XyoBuffer(data: value, allowedOffset: offset), schema: schemaOfItem)
+            return XyoIterableStructure(value: XyoBuffer(data: value, allowedOffset: offset, lastOffset: sizeOfObject + offset + schemaOfItem.getSizeIdentifier().rawValue - 1), schema: schemaOfItem)
         }
         
-        return XyoObjectStructure(value: XyoBuffer(data: value, allowedOffset: offset), schema: schemaOfItem)
+        return XyoObjectStructure(value: XyoBuffer(data: value, allowedOffset: offset, lastOffset: sizeOfObject + offset + schemaOfItem.getSizeIdentifier().rawValue - 1), schema: schemaOfItem)
     }
     
     private func readOwnHeader () throws -> Int {

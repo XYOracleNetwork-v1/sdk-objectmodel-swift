@@ -12,14 +12,6 @@ class XyoObjectStructure {
     private let typedSchema : XyoObjectSchema?
     let value : XyoBuffer
     
-    private var headerSize : Int {
-        if (typedSchema == nil) {
-            return 0
-        }
-        
-        return 2
-    }
-    
     init (value : XyoBuffer) {
         self.typedSchema = nil
         self.value = value
@@ -27,7 +19,7 @@ class XyoObjectStructure {
     
     init (value : XyoBuffer, schema : XyoObjectSchema) {
         self.typedSchema = schema
-        self.value = value
+        self.value = XyoBuffer().put(schema: schema).put(buffer: value)
     }
     
     open func getBuffer () -> XyoBuffer {
@@ -40,11 +32,11 @@ class XyoObjectStructure {
     
     open func getValueCopy () -> XyoBuffer {
         let sizeOfObject = getSize()
-        return XyoBuffer(data: value, allowedOffset: value.allowedOffset, lastOffset : sizeOfObject + value.allowedOffset + headerSize)
+        return XyoBuffer(data: value, allowedOffset: value.allowedOffset, lastOffset : sizeOfObject + value.allowedOffset + 2)
     }
     
     func getSize () -> Int {
-        return readSizeOfObject(sizeIdentifier: getSchema().getSizeIdentifier(), offset: headerSize)
+        return readSizeOfObject(sizeIdentifier: getSchema().getSizeIdentifier(), offset: 2)
     }
     
     func readSizeOfObject (sizeIdentifier : XyoObjectSize, offset : Int) -> Int {
