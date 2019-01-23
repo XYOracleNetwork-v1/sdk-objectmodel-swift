@@ -8,34 +8,35 @@
 
 import Foundation
 
-class XyoObjectStructure {
+open class XyoObjectStructure {
     private let typedSchema : XyoObjectSchema?
     let value : XyoBuffer
     
-    init (value : XyoBuffer) {
+    public init (value : XyoBuffer) {
         self.typedSchema = nil
         self.value = value
     }
     
-    init (value : XyoBuffer, schema : XyoObjectSchema) {
+    public init (value : XyoBuffer, schema : XyoObjectSchema) {
         self.typedSchema = schema
         self.value = XyoBuffer().put(schema: schema).put(buffer: value)
     }
     
-    open func getBuffer () -> XyoBuffer {
+    public func getBuffer () -> XyoBuffer {
         return value
     }
     
-    open func getSchema () -> XyoObjectSchema {
+    public func getSchema () -> XyoObjectSchema {
         return typedSchema ?? value.getSchema(offset: 0)
     }
     
-    open func getValueCopy () -> XyoBuffer {
-        let sizeOfObject = getSize()
-        return XyoBuffer(data: value, allowedOffset: value.allowedOffset, lastOffset : sizeOfObject + value.allowedOffset + 2)
+    public func getValueCopy () -> XyoBuffer {
+        let startIndex = value.allowedOffset + 2 + getSchema().getSizeIdentifier().rawValue
+        let endIndex = startIndex + getSize()
+        return XyoBuffer(data: value, allowedOffset: startIndex, lastOffset: endIndex)
     }
     
-    func getSize () -> Int {
+    public func getSize () -> Int {
         return readSizeOfObject(sizeIdentifier: getSchema().getSizeIdentifier(), offset: 2)
     }
     
@@ -52,11 +53,11 @@ class XyoObjectStructure {
         }
     }
 
-    static func newInstance (schema: XyoObjectSchema, bytes : XyoBuffer) -> XyoObjectStructure {
+    public static func newInstance (schema: XyoObjectSchema, bytes : XyoBuffer) -> XyoObjectStructure {
         let buffer = XyoBuffer()
-        let size = bytes.toByteArray().count + schema.getSizeIdentifier().rawValue
+        let size = bytes.toByteArray().count
         let typeOfSize = XyoByteUtil.getBestSize(size : size)
-        buffer.put(schema : schema)
+        buffer.put(schema : XyoObjectSchema.create(id: schema.id, isIterable: schema.getIsIterable(), isTypedIterable: schema.getIsTypedIterable(), sizeIdentifier: typeOfSize))
         
         switch (typeOfSize) {
         case XyoObjectSize.ONE:

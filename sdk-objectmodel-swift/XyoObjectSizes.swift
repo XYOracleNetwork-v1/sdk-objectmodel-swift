@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum XyoObjectSize : Int {
+public enum XyoObjectSize : Int {
     case ONE = 1
     case TWO = 2
     case FOUR = 4

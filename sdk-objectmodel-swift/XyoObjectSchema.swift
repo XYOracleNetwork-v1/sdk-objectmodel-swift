@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct XyoObjectSchema {
-    let id : UInt8
-    let encodingCatalogue : UInt8
+public struct XyoObjectSchema {
+    public let id : UInt8
+    public let encodingCatalogue : UInt8
     
-    init(id : UInt8, encodingCatalogue : UInt8) {
+    public init(id : UInt8, encodingCatalogue : UInt8) {
         self.id = id
         self.encodingCatalogue = encodingCatalogue
     }
     
-    func getSizeIdentifier () -> XyoObjectSize {
+    public func getSizeIdentifier () -> XyoObjectSize {
         
         // masking the first two bits to get the result
         // 0xC0 == 11000000
@@ -37,19 +37,19 @@ struct XyoObjectSchema {
         return XyoObjectSize.EIGHT
     }
     
-    func getIsIterable() -> Bool {
+    public func getIsIterable() -> Bool {
         return encodingCatalogue & 0x20 != 0
     }
     
-    func getIsTypedIterable() -> Bool {
+    public func getIsTypedIterable() -> Bool {
         return encodingCatalogue & 0x10 != 0
     }
     
-    func toByteArray () -> [UInt8] {
+    public func toByteArray () -> [UInt8] {
         return [encodingCatalogue, id]
     }
     
-    static func create (id : UInt8, isIterable : Bool, isTypedIterable: Bool, sizeIdentifier : XyoObjectSize) -> XyoObjectSchema {
+    public static func create (id : UInt8, isIterable : Bool, isTypedIterable: Bool, sizeIdentifier : XyoObjectSize) -> XyoObjectSchema {
         let iterableByte : UInt8 = getIterableByte(isIterable : isIterable)
         let isTypedIterableByte : UInt8 = getIsTypedByte(isTyped : isTypedIterable)
         let sizeIdentifierByte : UInt8 = getSizeIdentifierByte(sizeIdentifier : sizeIdentifier)

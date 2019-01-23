@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct XyoByteUtil {
-    static func concatAll(arrays : [[UInt8]]) -> [UInt8] {
+public struct XyoByteUtil {
+    public static func concatAll(arrays : [[UInt8]]) -> [UInt8] {
         var masterBuffer = [UInt8]()
         
         for array in arrays {
@@ -19,7 +19,7 @@ struct XyoByteUtil {
         return masterBuffer
     }
     
-    static func getBestSize (size : Int) -> XyoObjectSize {
+    public static func getBestSize (size : Int) -> XyoObjectSize {
         if (size + 1 <= UInt8.max) {
             return XyoObjectSize.ONE
         }
