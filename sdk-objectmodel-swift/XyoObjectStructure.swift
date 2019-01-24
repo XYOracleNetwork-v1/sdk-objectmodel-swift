@@ -26,18 +26,28 @@ open class XyoObjectStructure {
         return value
     }
     
-    public func getSchema () -> XyoObjectSchema {
+    public func getSchema () throws -> XyoObjectSchema {
         return typedSchema ?? value.getSchema(offset: 0)
     }
     
-    public func getValueCopy () -> XyoBuffer {
-        let startIndex = value.allowedOffset + 2 + getSchema().getSizeIdentifier().rawValue
-        let endIndex = startIndex + getSize()
+    public func getValueCopy () throws -> XyoBuffer {
+        let startIndex = value.allowedOffset + 2 + (try getSchema()).getSizeIdentifier().rawValue
+        let endIndex = startIndex + (try getSize()) - 1
+        
+        try checkIndex(index: endIndex)
+        
         return XyoBuffer(data: value, allowedOffset: startIndex, lastOffset: endIndex)
     }
     
-    public func getSize () -> Int {
-        return readSizeOfObject(sizeIdentifier: getSchema().getSizeIdentifier(), offset: 2)
+    public func getSize () throws -> Int {
+        try checkIndex(index: 2)
+        return readSizeOfObject(sizeIdentifier: (try getSchema()).getSizeIdentifier(), offset: 2)
+    }
+    
+    internal func checkIndex (index : Int) throws {
+        if (index > value.getSize()) {
+            throw XyoObjectError.OUT_OF_INDEX
+        }
     }
     
     func readSizeOfObject (sizeIdentifier : XyoObjectSize, offset : Int) -> Int {
@@ -61,13 +71,13 @@ open class XyoObjectStructure {
         
         switch (typeOfSize) {
         case XyoObjectSize.ONE:
-            buffer.put(bits : UInt8(size))
+            buffer.put(bits : UInt8(size + 1))
         case XyoObjectSize.TWO:
-            buffer.put(bits : UInt16(size))
+            buffer.put(bits : UInt16(size + 2))
         case XyoObjectSize.FOUR:
-            buffer.put(bits : UInt32(size))
+            buffer.put(bits : UInt32(size + 4))
         case XyoObjectSize.EIGHT:
-            buffer.put(bits : UInt64(size))
+            buffer.put(bits : UInt64(size + 8))
         }
         
         buffer.put(bytes: bytes.toByteArray())

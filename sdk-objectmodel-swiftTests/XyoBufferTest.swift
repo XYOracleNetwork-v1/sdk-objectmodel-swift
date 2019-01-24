@@ -100,4 +100,33 @@ class XyoBufferTest : XCTestCase {
         XCTAssertEqual(got, int)
     }
     
+    func testSubByteArray () {
+        let buffer = XyoBuffer(data : [0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07])
+        let subBuffer = XyoBuffer(data: buffer, allowedOffset: 2, lastOffset: 4)
+        
+        XCTAssertEqual([0x02, 0x03], subBuffer.toByteArray())
+    }
+    
+    func testSubSize () {
+        let buffer = XyoBuffer(data : [0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07])
+        let subBuffer = XyoBuffer(data: buffer, allowedOffset: 2, lastOffset: 4)
+        
+        XCTAssertEqual(2, subBuffer.getSize())
+    }
+    
+    func testSize () {
+        let buffer = XyoBuffer(data : [0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07])
+        
+        XCTAssertEqual(8, buffer.getSize())
+    }
+    
+    func testSubSchema () {
+        let buffer = XyoBuffer(data : [0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07])
+        let subBuffer = XyoBuffer(data: buffer, allowedOffset: 2, lastOffset: 4)
+        let subSchema = subBuffer.getSchema(offset: 0)
+        
+        XCTAssertEqual(subSchema.id, 3)
+        XCTAssertEqual(subSchema.encodingCatalogue, 2)
+    }
+    
 }

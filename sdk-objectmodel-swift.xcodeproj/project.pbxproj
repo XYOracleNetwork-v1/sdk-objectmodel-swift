@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		695B2C5073D7C9B43F56BD41 /* Pods_sdk_objectmodel_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871D677C74184414E6CCA98B /* Pods_sdk_objectmodel_swift.framework */; };
+		8C6542D921F9310500124CB0 /* XyoHexStringToUIny8Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6542D821F9310500124CB0 /* XyoHexStringToUIny8Array.swift */; };
 		8CFBB63A21F6371D00BD42A3 /* sdk_objectmodel_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFBB63021F6371D00BD42A3 /* sdk_objectmodel_swift.framework */; };
 		8CFBB64121F6371D00BD42A3 /* sdk_objectmodel_swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CFBB63321F6371D00BD42A3 /* sdk_objectmodel_swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8CFBB64F21F6395C00BD42A3 /* XyoObjectSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFBB64E21F6395C00BD42A3 /* XyoObjectSchema.swift */; };
@@ -43,6 +44,7 @@
 		7B1FCE589BC9B91F302380B5 /* Pods_sdk_objectmodel_swiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sdk_objectmodel_swiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		871D677C74184414E6CCA98B /* Pods_sdk_objectmodel_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sdk_objectmodel_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		898E5F9B4AAF44A084F356F3 /* Pods-sdk-objectmodel-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sdk-objectmodel-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-sdk-objectmodel-swift/Pods-sdk-objectmodel-swift.release.xcconfig"; sourceTree = "<group>"; };
+		8C6542D821F9310500124CB0 /* XyoHexStringToUIny8Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoHexStringToUIny8Array.swift; sourceTree = "<group>"; };
 		8CFBB63021F6371D00BD42A3 /* sdk_objectmodel_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = sdk_objectmodel_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFBB63321F6371D00BD42A3 /* sdk_objectmodel_swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sdk_objectmodel_swift.h; sourceTree = "<group>"; };
 		8CFBB63421F6371D00BD42A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				8CFBB66221F670CD00BD42A3 /* XyoBufferTest.swift */,
 				8CFBB66421F6780200BD42A3 /* XyoObjectStructureTest.swift */,
 				8CFBB66A21F6A67D00BD42A3 /* XyoObjectIteratorTest.swift */,
+				8C6542D821F9310500124CB0 /* XyoHexStringToUIny8Array.swift */,
 			);
 			path = "sdk-objectmodel-swiftTests";
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				8CFBB66321F670CD00BD42A3 /* XyoBufferTest.swift in Sources */,
 				8CFBB65F21F6583700BD42A3 /* XyoByteUtilTest.swift in Sources */,
+				8C6542D921F9310500124CB0 /* XyoHexStringToUIny8Array.swift in Sources */,
 				8CFBB66521F6780200BD42A3 /* XyoObjectStructureTest.swift in Sources */,
 				8CFBB66B21F6A67D00BD42A3 /* XyoObjectIteratorTest.swift in Sources */,
 				8CFBB65121F643F500BD42A3 /* XyoObjectSchemaTest.swift in Sources */,

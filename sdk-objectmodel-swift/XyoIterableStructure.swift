@@ -19,7 +19,7 @@ open class XyoIterableStructure: XyoObjectStructure {
         let sizeIt = try self.getNewIterator()
         var i = 0
         
-        while (sizeIt.hasNext()) {
+        while (try sizeIt.hasNext()) {
             i += 1
             try sizeIt.next()
         }
@@ -31,7 +31,7 @@ open class XyoIterableStructure: XyoObjectStructure {
         let it = try getNewIterator()
         var i = 0
         
-        while (it.hasNext()) {
+        while (try it.hasNext()) {
             let item = try it.next()
             
             if (index == i) {
@@ -48,10 +48,10 @@ open class XyoIterableStructure: XyoObjectStructure {
         let it = try getNewIterator()
         var itemsThatFollowId = [XyoObjectStructure]()
         
-        while (it.hasNext()) {
+        while (try it.hasNext()) {
             let item = try it.next()
             
-            if (item.getSchema().id == id) {
+            if (try item.getSchema().id == id) {
                 itemsThatFollowId.append(item)
             }
             
@@ -76,13 +76,18 @@ open class XyoIterableStructure: XyoObjectStructure {
             throw XyoObjectError.SIZE_ZERO
         }
         
-        let object = XyoBuffer(data: value, allowedOffset: offset, lastOffset: sizeOfObject + offset + schemaOfItem.getSizeIdentifier().rawValue + 1)
+        let start = offset + value.allowedOffset
+        let end = offset + 1 + sizeOfObject + schemaOfItem.getSizeIdentifier().rawValue + value.allowedOffset
+        
+        try checkIndex(index: (end - value.allowedOffset))
+        
+        let object = XyoBuffer(data: value, allowedOffset: start, lastOffset: end)
         
         if (schemaOfItem.getIsIterable()) {
             return XyoIterableStructure(value: object)
         }
         
-        return XyoIterableStructure(value: object)
+        return XyoObjectStructure(value: object)
     }
     
     private func readItemTyped (offset : Int, schemaOfItem : XyoObjectSchema) throws -> XyoObjectStructure {
@@ -92,7 +97,12 @@ open class XyoIterableStructure: XyoObjectStructure {
             throw XyoObjectError.SIZE_ZERO
         }
         
-        let object = XyoBuffer(data: value, allowedOffset: offset, lastOffset: sizeOfObject + offset + schemaOfItem.getSizeIdentifier().rawValue - 1)
+        let start = offset + value.allowedOffset
+        let end = sizeOfObject + offset + schemaOfItem.getSizeIdentifier().rawValue - 1 + value.allowedOffset
+        
+        try checkIndex(index: (end - value.allowedOffset))
+        
+        let object = XyoBuffer(data: value, allowedOffset: start, lastOffset: end)
         
         if (schemaOfItem.getIsIterable()) {
             return XyoIterableStructure(value: object, schema: schemaOfItem)
@@ -102,7 +112,12 @@ open class XyoIterableStructure: XyoObjectStructure {
     }
     
     private func readOwnHeader () throws -> Int {
+        print("A")
+        try checkIndex(index: 2)
         let setHeader = value.getSchema(offset: 0)
+        
+        print("B")
+        try checkIndex(index: 2 + setHeader.getSizeIdentifier().rawValue)
         let totalSize = readSizeOfObject(sizeIdentifier: setHeader.getSizeIdentifier(), offset: 2)
         
         if (!setHeader.getIsIterable()) {
@@ -128,8 +143,8 @@ open class XyoIterableStructure: XyoObjectStructure {
             self.isTyped = isTyped
         }
         
-        public func hasNext () -> Bool {
-            return structure.value.getSize() + structure.value.allowedOffset > currentOffset
+        public func hasNext () throws -> Bool {
+            return try structure.getSize() + 2 > currentOffset
         }
         
         @discardableResult
@@ -138,9 +153,9 @@ open class XyoIterableStructure: XyoObjectStructure {
             let nextItem = try structure.readItemAtOffset(offset: currentOffset)
             
             if (isTyped) {
-                currentOffset += nextItem.value.getSize() - 2
+                currentOffset += try nextItem.getSize()
             } else {
-                currentOffset += nextItem.value.getSize()
+                currentOffset += try nextItem.getSize() + 2
             }
             
             return nextItem
@@ -172,13 +187,25 @@ open class XyoIterableStructure: XyoObjectStructure {
         
         let buffer = XyoBuffer()
         
-        buffer.put(schema: values[0].getSchema())
+        buffer.put(schema: try values[0].getSchema())
         
         for item in values {
             buffer.put(buffer: item.value.copyRangeOf(from: 2, to: item.value.getSize()))
         }
         
         return XyoIterableStructure(value: XyoObjectStructure.newInstance(schema: schema, bytes: buffer).getBuffer())
+    }
+    
+    public static func verify (item : XyoIterableStructure) throws {
+        let it = try item.getNewIterator()
+        
+        while try it.hasNext() {
+            let value = try it.next()
+            
+            if (value is XyoIterableStructure) {
+                try verify(item: (value as! XyoIterableStructure))
+            }
+        }
     }
     
 }
