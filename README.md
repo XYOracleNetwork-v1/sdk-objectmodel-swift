@@ -93,5 +93,38 @@ let entireStructure = structure.getBuffer() // gets the entire buffer value of t
 let structureSize = structure.getSize() // gets the size of the buffer, not including the schema
 ```
 
+### Iterable Structure
+An iterable structure is a special type of structure that can be iterated over, like a linked list or array. There are two types of iterable structures, typed and untyped. Typed iterable structures are smaller, but all elements must follow a single schema. A untyped array is larger, but all of the elements do not have to share the same schema. The 
+
+#### Creating a Iterable Structure
+You can create a iterable structure from a buffer or from a collection of elements.
+```swift
+let custumSchema : XyoObjectSchema = ...
+let elements : [XyoObjectStructure] = [...]
+let untyped = XyoIterableStructure.encodeUntypedIterableObject(schema: custumSchema, values: elements) // creates an untyped array of the elements
+let typed = XyoIterableStructure.encodeTypedIterableObject(schema: custumSchema, values: elements) // creates an typed array of the elements
+let fromBytes = XyoObjectStructure(value : XyoBuffer(data: ...))
+```
+
+#### Reading from an Iterable Structure
+After a iterable structure is created, you can extract all of the elements from it.
+
+```swift
+// using an iterator
+let iterator = iterableStructure.getNewIterator() // gets a fresh iterator
+
+while (try iterator.hasNext) {
+   doSomethingWithItem (try iterator.next())
+}
+
+
+let itemTwo = iterableStructure.get(index: 1) // gets an item at index 1
+let count = iterableStructure.getCount() // gets the total number of elements (size)
+
+// you can also get all of the elements in the structure that have an id
+let groupOfElementsOfId = iterableStructure.get(id: 0x02) // will get all the elements in the set with id: 0x02
+```
+
+
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
