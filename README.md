@@ -52,7 +52,7 @@ let subBuffer = buffer.copyRangeOf(from: 2, to: 4) // gets a range between 2 and
 
 
 ### Schema
-The XyoSchema struct is an object used to contain information about how a certain object is encoded. A schema is broken down into two bytes, the encoding catalogue and the id. The encoding catalogue includes how large the size is, if it is iterable, if it is a typed iterable, and its id. The id is simply the id of the schema.
+The XyoObjectSchema struct is an object used to contain information about how a certain object is encoded. A schema is broken down into two bytes, the encoding catalogue and the id. The encoding catalogue includes how large the size is, if it is iterable, if it is a typed iterable, and its id. The id is simply the id of the schema.
 
 #### Creating a Schema
 You can create a schema from an encoding catalogue and an id, from config pramaters, or from bytes.
@@ -69,6 +69,28 @@ let id = schema.id // gets the id
 let isTyped = schema.getIsTypedIterable() // gets if the schema is typed
 let isIterable = schema.getIsIterable() // gets if the schema is iterable
 let sizeOfSize = schema.getSizeIdentifier() // gets the size of the size
+```
+
+### Structure
+A structure is a buffer of bytes that contains a schema, a size, and a value. The XyoObjectStructure class allows for easy creation and reading of an XYO structure.
+
+#### Creating a structure
+You can create a structure from a schema and value, or another structures bytes.
+```swift
+let custumSchema = XyoObjectSchema(id: 12, encodingCatalogue: 0)
+let custumStructure = XyoObjectStructure.newInstance(schema: custumSchema, bytes: [0x13, 0x37]) // creates a schema with the value 0x1337
+
+let schemaBytes : [UInt8] = [0x00, 0x01, 0x03, 0x13, 0x37]
+let createdStructure = XyoObjectStructure(value: schemaBytes)
+```
+
+#### Reading a Structure
+After a structure is created, you can extract the value, schema, and size from it.
+```swift
+let structureSchema = structure.getSchema() // gets the schema of the structure
+let structureValue = structure.getValue() // gets the value of the structure
+let entireStructure = structure.getBuffer() // gets the entire buffer value of the structure
+let structureSize = structure.getSize() // gets the size of the buffer, not including the schema
 ```
 
 ## License
