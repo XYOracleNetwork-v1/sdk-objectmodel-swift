@@ -50,5 +50,26 @@ let number = buffer.getUInt64(offset: 2) // gets a long at offset 2
 let subBuffer = buffer.copyRangeOf(from: 2, to: 4) // gets a range between 2 and 4
 ```
 
+
+### Schema
+The XyoSchema struct is an object used to contain information about how a certain object is encoded. A schema is broken down into two bytes, the encoding catalogue and the id. The encoding catalogue includes how large the size is, if it is iterable, if it is a typed iterable, and its id. The id is simply the id of the schema.
+
+#### Creating a Schema
+You can create a schema from an encoding catalogue and an id, from config pramaters, or from bytes.
+
+```swift
+let manualSchema = XyoObjectSchema(id : 12, encodingCatalogue : 20) // creates a schema with id 12, and encodingCatalogue 20
+let configSchema = XyoObjectSchema.create(id : 12, isIterable : true, isTypedIterable: false, sizeIdentifier : XyoObjectSizes.TWO) // create an iteratble untyped schema with id 12, and a two byte size.
+```
+
+#### Reading a Schema
+After a schema is created, it can be read from to obtain information about the proceding object.
+```swift
+let id = schema.id // gets the id
+let isTyped = schema.getIsTypedIterable() // gets if the schema is typed
+let isIterable = schema.getIsIterable() // gets if the schema is iterable
+let sizeOfSize = schema.getSizeIdentifier() // gets the size of the size
+```
+
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
