@@ -16,13 +16,23 @@ public class XyoBuffer {
     public init(data : [UInt8], allowedOffset: Int, lastOffset : Int?) {
         self.data = data
         self.allowedOffset = allowedOffset
-        self.lastOffset = lastOffset
+        
+        if (lastOffset == self.data.count) {
+            self.lastOffset = nil
+        } else {
+            self.lastOffset = lastOffset
+        }
     }
     
     public init(data : XyoBuffer, allowedOffset: Int, lastOffset : Int?) {
         self.data = data.data
         self.allowedOffset = allowedOffset
-        self.lastOffset = lastOffset
+        
+        if (lastOffset == self.data.count) {
+            self.lastOffset = nil
+        } else {
+            self.lastOffset = lastOffset
+        }
     }
     
     public init(data : XyoBuffer, allowedOffset: Int) {

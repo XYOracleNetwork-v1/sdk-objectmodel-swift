@@ -15,4 +15,5 @@ public enum XyoObjectError: Error {
     case NOT_UNTYPED
     case NOT_TYPED
     case NO_ELEMENTS
+    case WRONG_TYPE
 }

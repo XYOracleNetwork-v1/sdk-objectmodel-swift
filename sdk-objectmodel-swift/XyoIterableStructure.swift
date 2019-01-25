@@ -77,7 +77,7 @@ open class XyoIterableStructure: XyoObjectStructure {
         }
         
         let start = offset + value.allowedOffset
-        let end = offset + 1 + sizeOfObject + schemaOfItem.getSizeIdentifier().rawValue + value.allowedOffset
+        let end = offset + 2 + sizeOfObject + value.allowedOffset
         
         try checkIndex(index: (end - value.allowedOffset))
         
@@ -98,7 +98,7 @@ open class XyoIterableStructure: XyoObjectStructure {
         }
         
         let start = offset + value.allowedOffset
-        let end = sizeOfObject + offset + schemaOfItem.getSizeIdentifier().rawValue - 1 + value.allowedOffset
+        let end = sizeOfObject + offset + value.allowedOffset
         
         try checkIndex(index: (end - value.allowedOffset))
         
@@ -112,11 +112,9 @@ open class XyoIterableStructure: XyoObjectStructure {
     }
     
     private func readOwnHeader () throws -> Int {
-        print("A")
         try checkIndex(index: 2)
         let setHeader = value.getSchema(offset: 0)
         
-        print("B")
         try checkIndex(index: 2 + setHeader.getSizeIdentifier().rawValue)
         let totalSize = readSizeOfObject(sizeIdentifier: setHeader.getSizeIdentifier(), offset: 2)
         
@@ -130,6 +128,27 @@ open class XyoIterableStructure: XyoObjectStructure {
         }
         
         return 2 + setHeader.getSizeIdentifier().rawValue
+    }
+    
+    // todo make this not copy
+    public func addElement (element : XyoObjectStructure) throws {
+        let buffer = try getValueCopy()
+        
+        if (try self.getSchema().getIsTypedIterable()) {
+            _ = try readOwnHeader()
+            
+            if (try element.getSchema().id == (self.globalSchema?.id)) {
+                buffer.put(buffer: element.getBuffer().copyRangeOf(from: 2, to: try element.getSize() + 2))
+                value = XyoObjectStructure.encode(schema: try self.getSchema(), bytes: buffer)
+                return
+            }
+            
+            throw XyoObjectError.WRONG_TYPE
+        }
+        
+        buffer.put(buffer: element.getBuffer())
+        
+        value = XyoObjectStructure.encode(schema: try self.getSchema(), bytes: buffer)
     }
     
     public class XyoObjectIterator {
@@ -162,7 +181,15 @@ open class XyoIterableStructure: XyoObjectStructure {
         }
     }
     
+    public static func createTypedIterableObject (schema : XyoObjectSchema, values: [XyoObjectStructure]) throws -> XyoIterableStructure {
+        return XyoIterableStructure(value: try encodeTypedIterableObject(schema: schema, values: values))
+    }
+    
     public static func createUntypedIterableObject (schema : XyoObjectSchema, values: [XyoObjectStructure]) throws -> XyoIterableStructure {
+        return XyoIterableStructure(value: try encodeUntypedIterableObject(schema: schema, values: values))
+    }
+    
+    public static func encodeUntypedIterableObject (schema : XyoObjectSchema, values: [XyoObjectStructure]) throws -> XyoBuffer {
         if (schema.getIsTypedIterable()) {
             throw XyoObjectError.NOT_UNTYPED
         }
@@ -173,10 +200,10 @@ open class XyoIterableStructure: XyoObjectStructure {
             buffer.put(buffer: item.getBuffer())
         }
         
-        return XyoIterableStructure(value: XyoObjectStructure.newInstance(schema: schema, bytes: buffer).getBuffer())
+        return XyoObjectStructure.encode(schema: schema, bytes: buffer)
     }
     
-    public static func createTypedIterableObject (schema : XyoObjectSchema, values: [XyoObjectStructure]) throws -> XyoIterableStructure {
+    static func encodeTypedIterableObject(schema : XyoObjectSchema, values: [XyoObjectStructure]) throws -> XyoBuffer {
         if (!schema.getIsTypedIterable()) {
             throw XyoObjectError.NOT_TYPED
         }
@@ -193,7 +220,8 @@ open class XyoIterableStructure: XyoObjectStructure {
             buffer.put(buffer: item.value.copyRangeOf(from: 2, to: item.value.getSize()))
         }
         
-        return XyoIterableStructure(value: XyoObjectStructure.newInstance(schema: schema, bytes: buffer).getBuffer())
+        return XyoObjectStructure.encode(schema: schema, bytes: buffer)
+        
     }
     
     public static func verify (item : XyoIterableStructure) throws {

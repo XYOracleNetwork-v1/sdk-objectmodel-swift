@@ -10,7 +10,7 @@ import Foundation
 
 open class XyoObjectStructure {
     private let typedSchema : XyoObjectSchema?
-    let value : XyoBuffer
+    var value : XyoBuffer
     
     public init (value : XyoBuffer) {
         self.typedSchema = nil
@@ -64,6 +64,10 @@ open class XyoObjectStructure {
     }
 
     public static func newInstance (schema: XyoObjectSchema, bytes : XyoBuffer) -> XyoObjectStructure {
+        return XyoObjectStructure(value: encode(schema: schema, bytes : bytes))
+    }
+    
+    static func encode (schema: XyoObjectSchema, bytes : XyoBuffer) -> XyoBuffer {
         let buffer = XyoBuffer()
         let size = bytes.toByteArray().count
         let typeOfSize = XyoByteUtil.getBestSize(size : size)
@@ -80,8 +84,6 @@ open class XyoObjectStructure {
             buffer.put(bits : UInt64(size + 8))
         }
         
-        buffer.put(bytes: bytes.toByteArray())
-        
-        return XyoObjectStructure(value: buffer)
+        return buffer.put(bytes: bytes.toByteArray())
     }
 }
