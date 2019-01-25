@@ -113,7 +113,7 @@ After a iterable structure is created, you can extract all of the elements from 
 // using an iterator
 let iterator = iterableStructure.getNewIterator() // gets a fresh iterator
 
-while (try iterator.hasNext) {
+while (try iterator.hasNext()) {
    doSomethingWithItem (try iterator.next())
 }
 
