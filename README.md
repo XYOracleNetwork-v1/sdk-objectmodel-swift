@@ -14,7 +14,7 @@ This library is structed into 4 centrel objects that you may be using, the buffe
 
 ### Buffer
 
-The XyoBuffer class is a tool to create byte buffers so you can eaisly place numbers, schemas, and any other data.
+The XyoBuffer class is a tool to create byte buffers so you can easily place numbers, schemas, and any other data.
 
 #### Creating a Buffer
 You can create a buffer from nothing, from another buffer, or a subset of another buffer.
@@ -48,7 +48,7 @@ let number = buffer.getUInt16(offset: 2) // gets a short at offset 2
 let number = buffer.getUInt32(offset: 2) // gets a int at offset 2
 let number = buffer.getUInt64(offset: 2) // gets a long at offset 2
 let subBuffer = buffer.copyRangeOf(from: 2, to: 4) // gets a range between 2 and 4
-
+```
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details
