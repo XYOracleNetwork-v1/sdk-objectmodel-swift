@@ -1,5 +1,5 @@
 language: swift
-xcode_project: sdk-objectmodel-swift.xcodeproj # path to your xcodeproj folder
+xcode_project: sdk-objectmodel-swift.xcworkspace # path to your xcodeproj folder
 xcode_scheme: sdk-objectmodel-swift
 xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
 
