@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C62C9DC21FC003300CD6359 /* Pods_sdk_objectmodel_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C62C9DB21FC003300CD6359 /* Pods_sdk_objectmodel_swift.framework */; };
 		8C6542D921F9310500124CB0 /* XyoHexStringToUIny8Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6542D821F9310500124CB0 /* XyoHexStringToUIny8Array.swift */; };
 		8CFBB63A21F6371D00BD42A3 /* sdk_objectmodel_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFBB63021F6371D00BD42A3 /* sdk_objectmodel_swift.framework */; };
 		8CFBB64121F6371D00BD42A3 /* sdk_objectmodel_swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CFBB63321F6371D00BD42A3 /* sdk_objectmodel_swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,6 +44,7 @@
 		7B1FCE589BC9B91F302380B5 /* Pods_sdk_objectmodel_swiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sdk_objectmodel_swiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		871D677C74184414E6CCA98B /* Pods_sdk_objectmodel_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sdk_objectmodel_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		898E5F9B4AAF44A084F356F3 /* Pods-sdk-objectmodel-swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sdk-objectmodel-swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-sdk-objectmodel-swift/Pods-sdk-objectmodel-swift.release.xcconfig"; sourceTree = "<group>"; };
+		8C62C9DB21FC003300CD6359 /* Pods_sdk_objectmodel_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_sdk_objectmodel_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6542D821F9310500124CB0 /* XyoHexStringToUIny8Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoHexStringToUIny8Array.swift; sourceTree = "<group>"; };
 		8CFBB63021F6371D00BD42A3 /* sdk_objectmodel_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = sdk_objectmodel_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFBB63321F6371D00BD42A3 /* sdk_objectmodel_swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sdk_objectmodel_swift.h; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C62C9DC21FC003300CD6359 /* Pods_sdk_objectmodel_swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +103,7 @@
 		7DEBDDF91C9B640C60DB34C5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C62C9DB21FC003300CD6359 /* Pods_sdk_objectmodel_swift.framework */,
 				871D677C74184414E6CCA98B /* Pods_sdk_objectmodel_swift.framework */,
 				7B1FCE589BC9B91F302380B5 /* Pods_sdk_objectmodel_swiftTests.framework */,
 			);

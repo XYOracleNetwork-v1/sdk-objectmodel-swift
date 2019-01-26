@@ -1,3 +1,4 @@
+osx_image: xcode10.1
 language: swift
 xcode_project: sdk-objectmodel-swift.xcodeproj # path to your xcodeproj folder
 xcode_scheme: sdk-objectmodel-swift
