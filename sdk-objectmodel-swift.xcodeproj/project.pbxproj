@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		695B2C5073D7C9B43F56BD41 /* Pods_sdk_objectmodel_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 871D677C74184414E6CCA98B /* Pods_sdk_objectmodel_swift.framework */; };
 		8C6542D921F9310500124CB0 /* XyoHexStringToUIny8Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6542D821F9310500124CB0 /* XyoHexStringToUIny8Array.swift */; };
 		8CFBB63A21F6371D00BD42A3 /* sdk_objectmodel_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFBB63021F6371D00BD42A3 /* sdk_objectmodel_swift.framework */; };
 		8CFBB64121F6371D00BD42A3 /* sdk_objectmodel_swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CFBB63321F6371D00BD42A3 /* sdk_objectmodel_swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -72,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				695B2C5073D7C9B43F56BD41 /* Pods_sdk_objectmodel_swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
