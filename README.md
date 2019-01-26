@@ -12,7 +12,7 @@ Implementation of the [XYO object model](https://github.com/XYOracleNetwork/spec
 | Branches        | Status           |
 | ------------- |:-------------:|
 | Master      | [![Build Status](https://travis-ci.org/XYOracleNetwork/sdk-objectmodel-swift.svg?branch=master)](https://travis-ci.org/XYOracleNetwork/sdk-objectmodel-swift) |
-| Develop      | [![Build Status](https://travis-ci.org/XYOracleNetwork/sdk-objectmodel-kotlin.svg?branch=swift)](https://travis-ci.org/XYOracleNetwork/sdk-objectmodel-swift)      |
+| Develop      | [![Build Status](https://travis-ci.org/XYOracleNetwork/sdk-objectmodel-kotlin.svg?branch=develop)](https://travis-ci.org/XYOracleNetwork/sdk-objectmodel-swift)      |
 
 ## Getting Started
 This library is structed into 4 centrel objects that you may be using, the buffer, the structure, the iterable structure, and the schema. 
