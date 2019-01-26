@@ -6,16 +6,11 @@ xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
 
 script:
   - gem install slather &&
-    curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter &&
-    chmod +x ./cc-test-reporter &&
+    curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-0.6.3-darwin-amd64 > ./cc-test-reporter &&
+    chmod 777 ./cc-test-reporter &&
     ./cc-test-reporter before-build &&
-    codebuild -project sdk-objectmodel-swift.xcodeproj -scheme sdk-objectmodel-swift -destination platform\=iOS\ Simulator,OS\=12.1,name\=iPhone\ X build test | xcpretty &&
+    xcodebuild -project sdk-objectmodel-swift.xcodeproj -scheme sdk-objectmodel-swift -destination platform\=iOS\ Simulator,OS\=12.1,name\=iPhone\ X build test | xcpretty &&
     slather coverage -x --scheme sdk-objectmodel-swift sdk-objectmodel-swift.xcodeproj &&
     ./cc-test-reporter after-build
 
     
-
-
-
-   
-
