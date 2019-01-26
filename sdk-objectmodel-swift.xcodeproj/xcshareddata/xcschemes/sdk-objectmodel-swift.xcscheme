@@ -3,7 +3,7 @@
    LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "YES"
+      parallelizeBuildables = "NO"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
@@ -17,6 +17,20 @@
                BlueprintIdentifier = "8CFBB62F21F6371D00BD42A3"
                BuildableName = "sdk_objectmodel_swift.framework"
                BlueprintName = "sdk-objectmodel-swift"
+               ReferencedContainer = "container:sdk-objectmodel-swift.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8CFBB63821F6371D00BD42A3"
+               BuildableName = "sdk-objectmodel-swiftTests.xctest"
+               BlueprintName = "sdk-objectmodel-swiftTests"
                ReferencedContainer = "container:sdk-objectmodel-swift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
