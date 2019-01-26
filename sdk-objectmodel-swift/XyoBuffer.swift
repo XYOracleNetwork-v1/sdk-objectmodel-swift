@@ -35,12 +35,6 @@ public class XyoBuffer {
         }
     }
     
-    public init(data : XyoBuffer, allowedOffset: Int) {
-        self.data = data.data
-        self.allowedOffset = allowedOffset
-        self.lastOffset = nil
-    }
-    
     public init(data : [UInt8]) {
         self.data = data
         self.allowedOffset = 0
