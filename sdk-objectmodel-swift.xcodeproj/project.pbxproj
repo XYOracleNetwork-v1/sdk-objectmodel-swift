@@ -180,8 +180,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8CFBB64421F6371D00BD42A3 /* Build configuration list for PBXNativeTarget "sdk-objectmodel-swift" */;
 			buildPhases = (
-				8CFBB62D21F6371D00BD42A3 /* Frameworks */,
 				A9302BE4BAAF51B08C20B289 /* [CP] Check Pods Manifest.lock */,
+				8CFBB62D21F6371D00BD42A3 /* Frameworks */,
 				8CFBB62B21F6371D00BD42A3 /* Headers */,
 				8CFBB62C21F6371D00BD42A3 /* Sources */,
 			);
