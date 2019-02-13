@@ -185,13 +185,13 @@ open class XyoIterableStructure: XyoObjectStructure {
         return XyoIterableStructure(value: try encodeTypedIterableObject(schema: schema, values: values))
     }
     
-    public static func createUntypedIterableObject (schema : XyoObjectSchema, values: [XyoObjectStructure]) throws -> XyoIterableStructure {
-        return XyoIterableStructure(value: try encodeUntypedIterableObject(schema: schema, values: values))
+    public static func createUntypedIterableObject (schema : XyoObjectSchema, values: [XyoObjectStructure]) -> XyoIterableStructure {
+        return XyoIterableStructure(value: encodeUntypedIterableObject(schema: schema, values: values))
     }
     
-    public static func encodeUntypedIterableObject (schema : XyoObjectSchema, values: [XyoObjectStructure]) throws -> XyoBuffer {
+    public static func encodeUntypedIterableObject (schema : XyoObjectSchema, values: [XyoObjectStructure]) -> XyoBuffer {
         if (schema.getIsTypedIterable()) {
-            throw XyoObjectError.NOT_UNTYPED
+            fatalError("Schema is not untyped.")
         }
         
         let buffer = XyoBuffer()
@@ -205,7 +205,7 @@ open class XyoIterableStructure: XyoObjectStructure {
     
     static func encodeTypedIterableObject(schema : XyoObjectSchema, values: [XyoObjectStructure]) throws -> XyoBuffer {
         if (!schema.getIsTypedIterable()) {
-            throw XyoObjectError.NOT_TYPED
+            fatalError("Schema is not typed.")
         }
         
         if (values.isEmpty) {
