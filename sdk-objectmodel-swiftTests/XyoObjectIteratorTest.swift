@@ -41,7 +41,7 @@ class XyoObjectIteratorTest : XCTestCase {
                                           0x03,         // size of element [1]
                                           0x13, 0x37]   // value of element [1]
         
-        let createdSet = try XyoIterableStructure.createUntypedIterableObject(schema: iterableSchema, values: values)
+        let createdSet = XyoIterableStructure.createUntypedIterableObject(schema: iterableSchema, values: values)
         
         XCTAssertEqual(createdSet.value.toByteArray(), expectedIterable)
     }
@@ -135,7 +135,7 @@ class XyoObjectIteratorTest : XCTestCase {
                                             0x03,         // size of element [2]
                                             0x13, 0x37]   // value of element [2]
         
-        let createdSet = try XyoIterableStructure.createUntypedIterableObject(schema: iterableSchema, values: values)
+        let createdSet = XyoIterableStructure.createUntypedIterableObject(schema: iterableSchema, values: values)
         try createdSet.addElement(element: itemToAdd)
         
         XCTAssertEqual(createdSet.value.toByteArray(), expectedIterable)
