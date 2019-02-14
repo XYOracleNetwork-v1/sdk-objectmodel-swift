@@ -31,7 +31,7 @@ open class XyoObjectStructure {
     }
     
     public func getValueCopy () throws -> XyoBuffer {        
-        let startIndex = 2 + (try getSchema()).getSizeIdentifier().rawValue
+        let startIndex = 2 + (try getSchema()).getSizeIdentifier().rawValue + value.allowedOffset
         let endIndex = startIndex + (try getSize()) - (try getSchema()).getSizeIdentifier().rawValue
         try checkIndex(index: endIndex)
         
