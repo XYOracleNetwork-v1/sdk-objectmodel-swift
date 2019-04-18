@@ -39,7 +39,8 @@ open class XyoObjectStructure {
     }
     
     public func getSize () throws -> Int {
-        try checkIndex(index: 2)
+        let sizeOfSize = Int(try getSchema().getSizeIdentifier().rawValue)
+        try checkIndex(index: sizeOfSize + 2)
         return readSizeOfObject(sizeIdentifier: (try getSchema()).getSizeIdentifier(), offset: 2)
     }
     
