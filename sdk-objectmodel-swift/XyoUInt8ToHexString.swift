@@ -9,7 +9,7 @@
 import Foundation
 
 public extension Collection where Element == UInt8 {
-    public func toHexString () -> String {
+    func toHexString () -> String {
         return "0x" + map{ String(format: "%02X", $0) }.joined()
     }
     

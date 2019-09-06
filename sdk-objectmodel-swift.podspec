@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'sdk-objectmodel-swift'
-  s.version          = '0.1.3-beta.1'
+  s.version          = '3.0.0'
   s.summary          = 'An implementation of the XYO object model in swift.'
 
 # This description is used to generate tags and improve search results.
@@ -22,12 +22,12 @@ This library is an implementation of the XYO object model in swift and is fully 
                        DESC
 
   s.homepage         = 'https://github.com/XYOracleNetwork/sdk-objectmodel-swift'
-  s.license          = { :type => 'MIT', :file => 'LICENSE.txt' }
+  s.license          = { :type => 'LGPL3', :file => 'LICENSE' }
   s.author           = { 'Carter Harrison' => 'carter@xyo.network' }
   s.source           = { :git => 'https://github.com/XYOracleNetwork/sdk-objectmodel-swift.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '10.0'
-  s.swift_version = '4.2.1'
+  s.swift_version = '5.0'
   s.source_files = 'sdk-objectmodel-swift/**/*.{swift}'
 
 end
