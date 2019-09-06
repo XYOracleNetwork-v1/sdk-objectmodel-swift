@@ -12,4 +12,8 @@ public extension Collection where Element == UInt8 {
     func toHexString () -> String {
         return "0x" + map{ String(format: "%02X", $0) }.joined()
     }
+    
+    public func toBase58String () -> String {
+        return XyoBase58.base58FromBytes(map{$0})
+    }
 }

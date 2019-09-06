@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C22A489224C230600983FD2 /* XyoBase58.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C22A488224C230600983FD2 /* XyoBase58.swift */; };
 		8C6542D921F9310500124CB0 /* XyoHexStringToUIny8Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6542D821F9310500124CB0 /* XyoHexStringToUIny8Array.swift */; };
 		8CFBB63A21F6371D00BD42A3 /* sdk_objectmodel_swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFBB63021F6371D00BD42A3 /* sdk_objectmodel_swift.framework */; };
 		8CFBB64121F6371D00BD42A3 /* sdk_objectmodel_swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CFBB63321F6371D00BD42A3 /* sdk_objectmodel_swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C22A488224C230600983FD2 /* XyoBase58.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoBase58.swift; sourceTree = "<group>"; };
 		8C6542D821F9310500124CB0 /* XyoHexStringToUIny8Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XyoHexStringToUIny8Array.swift; sourceTree = "<group>"; };
 		8CFBB63021F6371D00BD42A3 /* sdk_objectmodel_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = sdk_objectmodel_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFBB63321F6371D00BD42A3 /* sdk_objectmodel_swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sdk_objectmodel_swift.h; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				8CFBB65C21F6559F00BD42A3 /* XyoByteUtil.swift */,
 				8CFBB66021F66E1400BD42A3 /* XyoObjectStructure.swift */,
 				8CFBB66621F67ED700BD42A3 /* XyoIterableStructure.swift */,
+				8C22A488224C230600983FD2 /* XyoBase58.swift */,
 			);
 			path = "sdk-objectmodel-swift";
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 			files = (
 				8CFBB66121F66E1400BD42A3 /* XyoObjectStructure.swift in Sources */,
 				8CFBB65D21F6559F00BD42A3 /* XyoByteUtil.swift in Sources */,
+				8C22A489224C230600983FD2 /* XyoBase58.swift in Sources */,
 				8CFBB65321F64AC000BD42A3 /* XyoObjectErrors.swift in Sources */,
 				8CFBB65B21F651A100BD42A3 /* XyoBuffer.swift in Sources */,
 				8CFBB64F21F6395C00BD42A3 /* XyoObjectSchema.swift in Sources */,
