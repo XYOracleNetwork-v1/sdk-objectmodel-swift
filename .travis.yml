@@ -1,5 +1,7 @@
-osx_image: xcode10.1
-language: swift
+os: osx
+osx_image: xcode10.2
+language: objective-c
+cache: cocoapods
 xcode_project: sdk-objectmodel-swift.xcodeproj 
 xcode_scheme: sdk-objectmodel-swift
 xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
