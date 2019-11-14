@@ -58,7 +58,8 @@ struct XyoBase58 {
         }
         
         for b in base58 {
-          str = "\(str)\(String.Index(utf16Offset: Int(b), in:base58Alphabet))"
+          let offset = String.Index(utf16Offset: Int(b), in:base58Alphabet)
+          str += "\(base58Alphabet[offset])"
         }
         
         return str
